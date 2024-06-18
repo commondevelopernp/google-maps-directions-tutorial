@@ -20,11 +20,11 @@ import {
 } from '@react-google-maps/api'
 import { useRef, useState } from 'react'
 
-const center = { lat: 48.8584, lng: 2.2945 }
+const center = { lat: -34.6288318, lng: -58.4240645 }
 
 function App() {
   const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+    googleMapsApiKey: "AIzaSyAEtS-S0SMmdz90L80Ipks4xj88glMZHos",
     libraries: ['places'],
   })
 
@@ -46,6 +46,7 @@ function App() {
     if (originRef.current.value === '' || destiantionRef.current.value === '') {
       return
     }
+    console.log(originRef.current.value,destiantionRef.current.value)
     // eslint-disable-next-line no-undef
     const directionsService = new google.maps.DirectionsService()
     const results = await directionsService.route({
@@ -79,7 +80,7 @@ function App() {
         {/* Google Map Box */}
         <GoogleMap
           center={center}
-          zoom={15}
+          zoom={11}
           mapContainerStyle={{ width: '100%', height: '100%' }}
           options={{
             zoomControl: false,
@@ -140,7 +141,7 @@ function App() {
             isRound
             onClick={() => {
               map.panTo(center)
-              map.setZoom(15)
+              map.setZoom(20)
             }}
           />
         </HStack>
